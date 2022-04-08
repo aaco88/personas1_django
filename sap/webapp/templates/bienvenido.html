@@ -5,8 +5,17 @@
     <title>Bienvenido</title>
 </head>
 <body>
-<h1>Bienvenido a la clase Django</h1>
-<div>{{msg1}}</div>
-<div>{{msg2}}</div>
+<h1>Bienvenido al Sistemas de Administración de Personas (SAP)</h1>
+<div>Cantidad de Personas agregadas: {{cPersonas}}</div>
+<div>
+    <ul>
+        {% for i in tPersonas %}
+        <li>
+            Persona {{i.id}}: {{i.nombre}} {{i.apellido}} {{i.email}}
+            <a href="detalle_persona/{{i.id}}">Ver detalle</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 </body>
 </html>

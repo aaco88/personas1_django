@@ -2,7 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from personas.models import Persona
 
 
 def bienvenido(request):
-    return render(request, 'bienvenido.html', {'msg1': 'Mensaje1', 'msg2': 'Mensaje2'})
+    cantPersonas = Persona.objects.count()
+    # todasPersonas = Persona.objects.all()
+    todasPersonas = Persona.objects.order_by('id', 'nombre')
+    return render(request, 'bienvenido.html', {'cPersonas': cantPersonas, 'tPersonas': todasPersonas})
